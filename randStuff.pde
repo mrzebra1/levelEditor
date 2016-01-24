@@ -1,24 +1,13 @@
-void drawTab(float x, float y, color c, String w, int type) {
-  float tw = 70, th = 20;
-  
-
-  
-  
+void drawHero(float x, float y, float s, color c) {
+  //s*=sF;
   fill(c);
-  beginShape();
-  vertex(x, y);//bottom left
-  vertex(x+tw/8, y-th);//top left
-  vertex(x+.875*tw, y-th);//150
-  vertex(x+tw, y);
-  endShape();
-  
-  if(mouseP && mouseX > x+tw/8 && mouseX < x+.875*tw && mouseY <  y && mouseY >y-th){
-    mouseP = false;
-    tabVar = type;
-  }
-  
-  textAlign(CENTER);
-  textFont(myFont, 12);
-  fill(0);
-  text(w, x+tw/2, y-th/4);
+  ellipse(x-8*s, y-8*s, 8*s, 8*s);
+  ellipse(x-8*s, y+8*s, 8*s, 8*s);
+  ellipse(x+8*s, y-8*s, 8*s, 8*s);
+  ellipse(x+8*s, y+8*s, 8*s, 8*s);
+  triangle(x, y+ 15*s, x  +5*s, y + 5*s, x - 5*s, y+5*s);
+  // fill(34, 10, 12,50);
+  //ellipse(x, y, 20*s, 20*s);
+  fill(c);
+  ellipse(x, y-10*s, 13*s, 13*s);
 }

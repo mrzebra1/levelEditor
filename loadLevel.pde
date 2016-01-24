@@ -1,6 +1,7 @@
 String levWords;
 
 void loadLevel(int q) {
+  homes = new ArrayList();
   lands = new ArrayList();
   lilys = new ArrayList();
   flys = new ArrayList();
@@ -90,4 +91,3 @@ void loadLevel(int q) {
     }
   }
 }
-

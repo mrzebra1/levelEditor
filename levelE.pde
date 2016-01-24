@@ -1,8 +1,9 @@
 void setup() {
   size(985, 670);
   frameRate(30);
-   myFont = createFont("verdana", 12);
-  // smooth();
+  myFont = createFont("verdana", 12);
+
+
   textFont(myFont, 20);
   textAlign(CENTER);
   lLevel = loadStrings("l.txt");//load everything
@@ -26,12 +27,13 @@ int gridX, gridY;
 int sx, sy, ex, ey;
 int lw = 7, lh = 9;//boxes per screen
 
-int g = 10;
+int g = 20;
 
 int mSize = 600;
 
 
-int tabVar;
+
+
 
 void draw() {
   background(255);
@@ -50,44 +52,13 @@ void draw() {
   drawMap();
 
 
-  //folders
-  noStroke();
-  if (tabVar == 0) {//land
-    drawTab(700, 40, #FFBF8E, "Enemies", 3);
-    drawTab(640, 40, #DDFF8E, "Flys", 2);
-    drawTab(580, 40, #8EFFCF, "Rocks", 1);
-    drawTab(520, 40, #8EB2FF, "Lands", 0);
-    fill(#8EB2FF);
-    rect(520, 40, (700-520)+70, 300);   
-    landTab(540, 50);
-  }
-  else if (tabVar == 1) {//rocks
-    drawTab(700, 40, #FFBF8E, "Enemies", 3);
-    drawTab(520, 40, #8EB2FF, "Lands", 0);
-    drawTab(640, 40, #DDFF8E, "Flys", 2);
-    drawTab(580, 40, #8EFFCF, "Rocks", 1);
-    fill(#8EFFCF);
-    rect(520, 40, (700-520)+70, 300);
-    rockTab(540, 50);
-  }
-  else if (tabVar == 2) {//flys
-    drawTab(700, 40, #FFBF8E, "Enemies", 3);
-    drawTab(520, 40, #8EB2FF, "Lands", 0);
-    drawTab(580, 40, #8EFFCF, "Rocks", 1);
-    drawTab(640, 40, #DDFF8E, "Flys", 2);
-    fill(#DDFF8E);
-    rect(520, 40, (700-520)+70, 300);
-    flyTab(540, 50);
-  }
-  else if (tabVar == 3) {//enemies
-    drawTab(520, 40, #8EB2FF, "Lands", 0);
-    drawTab(580, 40, #8EFFCF, "Rocks", 1);
-    drawTab(640, 40, #DDFF8E, "Flys", 2);
-    drawTab(700, 40, #FFBF8E, "Enemies", 3);
-    fill(#FFBF8E);
-    rect(520, 40, (700-520)+70, 300);
-    beeTab(540, 50);
-  }
+
+  folderStuff();
+
+
+
+
+
 
 
   //bottom menu
@@ -100,14 +71,14 @@ void draw() {
     fill(255);
     text(w[i], 20 + 50*i + 35/2, 550 + 7.5 + 5);
     if (mouseP && mouseX > 20 + 50*i && mouseX < 20 + 50*i + 35 && mouseY >550 && mouseY < 550 + 15) 
-      c = i;
+      whichItem = i;
   }
 
 
   fill(0);
   textAlign(LEFT);
   textFont(myFont, 15);
-  text("tool: " + w[c], 20, 530);
+  text("tool: " + w[whichItem], 20, 530);
 
 
   text("mouse pos: ", 140, 530);
@@ -128,8 +99,7 @@ void draw() {
     par--;
     if (par < 0)
       par = 99;
-  }
-  else if (mouseP && dist(mouseX, mouseY, loc0+ 120, loc1-7.5) < 5) {
+  } else if (mouseP && dist(mouseX, mouseY, loc0+ 120, loc1-7.5) < 5) {
     mouseP = false;
     par++;
     if (par > 99)
@@ -147,8 +117,7 @@ void draw() {
     id--;
     if (id < 0)
       id = 99;
-  }
-  else if (mouseP && dist(mouseX, mouseY, loc0+ 120, loc1-7.5) < 5) {
+  } else if (mouseP && dist(mouseX, mouseY, loc0+ 120, loc1-7.5) < 5) {
     mouseP = false;
     id++;
     if (id > 99)
@@ -222,8 +191,7 @@ void draw() {
 
         //println(lLevel
         deleteLevel(heldLevel+2);
-      }
-      else if (heldLevel < i) {
+      } else if (heldLevel < i) {
 
         newLevel(i+1);
         theLevel[(i+1)*5] =  tempS[0];
@@ -263,123 +231,16 @@ int heldLevel;
 
 int id = 0;
 
-String[] w  = {
-  "Land", "rock", "sRock", "fly", "bee", "startP", "endP", "size", "snake", "lshoot"
-};
 
-int c =  0;
+
+//int c =  0;
 
 int mGridX, mGridY, rGridX, rGridY;
 
-boolean mouseP;
-boolean mousePGraph = false;
-void mousePressed() {
-  mouseP = true;
-  mGridX = gridX;
-  mGridY = gridY;
-  if (mouseX < mSize && mouseY < mSize) {
-    mousePGraph = true;
-  }
-}
 
 
 
-void mouseReleased() {
-  if (drag >=0) {//u were draging a level
-    drag = -2;
-  }
-  else {
-    drag = -1;
-  }
-  mouseP  =false;
-  rGridX = gridX;
-  rGridY = gridY;
 
-  if (mouseX < mSize && mouseY < mSize && mousePGraph == true) {
-    int t = 0;
-    if (mGridX>rGridX) {
-      t = rGridX;
-      rGridX =mGridX;
-      mGridX = t;
-    }
-    if (mGridY>rGridY) {
-      t = rGridY;
-      rGridY =mGridY;
-      mGridY = t;
-    }
-    //lands
-    if (c==0) {
-      lands.add(new Land(mGridX, mGridY, rGridX-mGridX+1, rGridY-mGridY+1));
-    }
-    else if (c==1 || c==2) {
-
-/*
-      //check for duplicates
-      for (int i=0; i <lilys.size();i++) {
-        if ( ((Lily)lilys.get(i)).x == mGridX &&  ((Lily)lilys.get(i)).y == mGridY) {
-          println("lily in same spot!"); 
-          return;
-        }
-      }
-      
-      */
-
-      if (c==1) {
-        lilys.add(new Lily(0, mGridX, mGridY));
-      }
-      else if (c == 2) {
-
-        lilys.add(specialCount, new Lily(0, mGridX, mGridY));
-        ((Lily) lilys.get(specialCount)).s=1;
-        specialCount++;
-      }
-    }
-    else if (c == 3) {
-
-      //check for duplicates
-      for (int i=0; i <flys.size();i++) {
-        if ( ((Fly)flys.get(i)).x == mGridX &&  ((Fly)flys.get(i)).y == mGridY) {
-          println("fly in same spot!"); 
-          return;
-        }
-      }
-
-
-      flys.add(new Fly(mGridX, mGridY));
-    }
-    else if (c==4) {//bee
-
-      bees.add(new Bee(mGridX, mGridY));
-    }
-    else if (c == 5) {//starting position
-
-      sx = mGridX;
-      sy = mGridY;
-    }
-    else if (c == 6) {//end position
-
-      ex = mGridX;
-      ey = mGridY;
-    }
-    else if (c == 7) {//map size
-
-      lw = mGridX+  1;
-      lh = mGridY+1;
-    }
-    else if (c == 8) {//snake
-
-      snakeX= mGridX;
-      snakeY = mGridY;
-    }
-    else if (c == 9) {//lavaShooter
-    
-     lshoots.add(new LShoot(mGridX, mGridY));
-     
-    }
-  }
-
-  mousePGraph = false;
-}
 
 
 int specialCount = 0;
@@ -407,38 +268,32 @@ void keyPressed() {
     if (lev > numLevs) 
       lev = 1;
     loadLevel(lev);
-  }
-  else if (keyCode == LEFT) {
+  } else if (keyCode == LEFT) {
     lev--;
     if (lev < 1)
       lev = numLevs;
     loadLevel(lev);
-  }
-  else if (key == 'e') {
+  } else if (key == 'e') {
     if (lev == 1) {
       saveLevel(0);
       for (int i = 5; i < numLevs*5; i++)
         theLevel[i] = lLevel[i];
-    }
-    else if (lev < numLevs) {
+    } else if (lev < numLevs) {
       for (int i = 0; i < (lev-1)*5; i++)
         theLevel[i] = lLevel[i];
       saveLevel(lev-1);
       for (int i = (5*(lev)); i < numLevs*5; i++)
         theLevel[i] = lLevel[i];
-    }
-    else if (lev == numLevs) {
+    } else if (lev == numLevs) {
       for (int i = 0; i < (numLevs-1)*5; i++)
         theLevel[i] = lLevel[i];
       saveLevel(lev-1);
     }
     saveStrings("data/l.txt", theLevel);
     lLevel = loadStrings("l.txt");//load everything
-  }
-  else if (key == 'n') {
+  } else if (key == 'n') {
     newLevel(lev);
-  }
-  else if (key == 'd') {
+  } else if (key == 'd') {
     deleteLevel(lev);
   }
 }
@@ -455,7 +310,7 @@ String returnStuff(int x) {
   if ( x < 10 && x>=0) 
     sx = "0" + x;
   else 
-    sx = "" + x  +"" ;
+  sx = "" + x  +"" ;
   return sx;
 }
 

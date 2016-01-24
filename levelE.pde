@@ -6,7 +6,7 @@ void setup() {
 
   textFont(myFont, 20);
   textAlign(CENTER);
-  lLevel = loadStrings("l.txt");//load everything
+  lLevel = loadStrings("cheese.txt");//load everything
   theLevel = new String[lLevel.length];
   numLevs = lLevel.length/5;
   loadLevel(1);
@@ -61,30 +61,20 @@ void draw() {
 
 
 
-  //bottom menu
-  textAlign(CENTER);
-  textFont(myFont, 10);
-
-  for (int i = 0; i < w.length; i++) {
-    fill(64);
-    rect(20 + 50*i, 550, 35, 15);
-    fill(255);
-    text(w[i], 20 + 50*i + 35/2, 550 + 7.5 + 5);
-    if (mouseP && mouseX > 20 + 50*i && mouseX < 20 + 50*i + 35 && mouseY >550 && mouseY < 550 + 15) 
-      whichItem = i;
-  }
 
 
-  fill(0);
-  textAlign(LEFT);
-  textFont(myFont, 15);
-  text("tool: " + w[whichItem], 20, 530);
 
 
-  text("mouse pos: ", 140, 530);
-  if (mouseX<mSize && mouseY < mSize) {
-    text("(" + gridX+  ", " + gridY + ")", 240, 530);
-  }
+
+
+  addMenu(650, 400);
+
+  mapInfo(700, 500);
+
+
+
+
+
 
   loc0 = 520;
   loc1 = 370;
@@ -221,6 +211,10 @@ void draw() {
   if (drag == -2) {
     drag = -1;
   }
+  
+  
+  
+  saveStuff();
 }
 
 
@@ -262,7 +256,28 @@ int k=0;
 String[] theLevel;
 
 int par = 0;
+
+int startPin;
+
+String pin ="";
+
 void keyPressed() {
+  
+  if(key == 'z'){
+    saveVar = -99;
+  }
+
+  if (key == 'q') {
+    startPin = 0;
+    pin = "";
+  }
+
+  if (startPin >0 && startPin < 3) {
+    pin+=key;
+  }
+
+
+  startPin++;
   if (keyCode == RIGHT) {
     lev++;
     if (lev > numLevs) 
@@ -273,9 +288,13 @@ void keyPressed() {
     if (lev < 1)
       lev = numLevs;
     loadLevel(lev);
-  } else if (key == 'e') {
+  } 
+
+  if (key == 'e') {
+
     if (lev == 1) {
       saveLevel(0);
+
       for (int i = 5; i < numLevs*5; i++)
         theLevel[i] = lLevel[i];
     } else if (lev < numLevs) {
@@ -291,7 +310,11 @@ void keyPressed() {
     }
     saveStrings("data/l.txt", theLevel);
     lLevel = loadStrings("l.txt");//load everything
-  } else if (key == 'n') {
+  }
+
+
+
+  if (key == 'n') {
     newLevel(lev);
   } else if (key == 'd') {
     deleteLevel(lev);

@@ -28,6 +28,15 @@ void drawMap() {
     ((LShoot) lshoots.get(i)).n=i;
     ((LShoot) lshoots.get(i)).drawMe();
   }
+  
+  
+      //homes
+  for (int i = 0; i <homes.size();i++) {
+    ((House)homes.get(i)).n=i;
+    ((House)homes.get(i)).drawMe();
+  }
+  
+  
 
   //fill(#FF0000);
   drawHero(sx*g + g/2, sy*g+g/2, .5, #02AF28);
@@ -52,4 +61,3 @@ void drawMap() {
   stroke(0, 128);
   rect(0, 0, 7*g, 9*g);
 }
-

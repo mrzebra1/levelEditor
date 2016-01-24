@@ -1,14 +1,17 @@
-ArrayList<Land> lands;
-class Land {
-  int x, y, a1, a2;//x, y, width, height
-  int n;
+class Zebra {
+  int x, y, a1, a2, a3, n;
+}
+
+ArrayList<Zebra> lands;
+class Land extends Zebra {
+  //x, y, width, height
+
   Land(int x, int y, int a1, int a2) {
     this.x=x;
     this.y=y; 
     this.a1=a1;
     this.a2=a2;
-    this.n = n;
-  } 
+  }
 
   void drawMe() {//draw gray rectangle for land
     noStroke();
@@ -21,27 +24,22 @@ class Land {
   }
 }
 
-
-ArrayList<House> homes;
-class House {
-  int x, y, a1, a2;//x, y, building, orintation
-  int n;
+ArrayList<Zebra> homes;
+class House extends Zebra {
+  //x, y, building, orintation, ID
   House(int x, int y) {
     this.x=x;
-    this.y=y; 
-    //this.a1=a1;
-    //this.a2=a2;
-    this.n = n;
+    this.y=y;
   } 
 
-  void drawMe() {//draw gray rectangle for land
+  void drawMe() {
     noStroke();
-    fill(150);
-    rect(x*g, y*g, a1*g, a2*g);
+    fill(#0000FF);
+    rect(x*g - g/2, y*g-g/2, 2*g, 2*g);
     fill(0);
     textFont(myFont, 10);
     textAlign(CENTER);
-    text("L" + n, g*(x+a1/2), g*(y+a2/2)+6);
+    text("H" + n, g*(x+a1/2), g*(y+a2/2)+6);
   }
 }
 
@@ -105,22 +103,49 @@ int numRow = 20;
 
 
 
-void landTab(ArrayList q, int px, int py) {//4 att dont need to change anything
+void Obj(ArrayList<Zebra> q, int px, int py) {
   int ppy = py;
-
   fill(0);
   textFont(myFont, 10);
   textAlign(LEFT);
-   
-  for (int i = 0; i < lands.size(); i++) {   
-    text(i, px+10, py+14.5);//number
+
+
+
+  for (int i = 0; i < q.size(); i++) {  
+    //println(instanceof q );
+    text(i + ": " + q.get(i).x + "," + q.get(i).y + "," + q.get(i).a1 + "," + q.get(i).a2+","+q.get(i).a2, px+10, py+14.5);//number
     ellipse(px, py+10, 10, 10);//delete button
+
+    for (int j = 0; j <5; j++) {
+      ellipse(px + 100 + 15*j, py+10, 10, 10);//delete button
+
+      if (mouseP && dist(px + 100 + 15*j, py+10, mouseX, mouseY)<5) {
+        if (j == 0)
+          q.get(i).x=parseInt(pin);
+        if (j == 1)
+          q.get(i).y=parseInt(pin);
+        if (j == 2)
+          q.get(i).a1=parseInt(pin);
+        if (j == 3)
+          q.get(i).a2=parseInt(pin);
+        if (j == 4)
+          q.get(i).a3=parseInt(pin);
+
+        mouseP = false;
+
+        return;
+      }
+    }
+
+
+
     if (mouseP && dist(px, py+10, mouseX, mouseY)<5) {//delete on Press
       mouseP = false;
       q.remove(i);
-      i--;
+      return;
+      //i--;
     }
-    
+
     py+=15;
     if (py > numRow*15) {//restack
       px += 80;

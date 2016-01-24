@@ -19,7 +19,7 @@ void loadLevel(int q) {
   int t;
 
   //lands
-  k = lLevel[1 +laz*5];
+  k = lLevel[1 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
     for (int i = 0; i < k.length(); i+=8) {
@@ -27,7 +27,7 @@ void loadLevel(int q) {
     }
   }
   //flys
-  k = lLevel[3+laz*5];
+  k = lLevel[3+laz*numLines];
   if (k.length() > 1) {
     kk = k.length()/16;
 
@@ -39,7 +39,7 @@ void loadLevel(int q) {
 
 
   //rocks and special rocks
-  k = lLevel[2+laz*5];
+  k = lLevel[2+laz*numLines];
   if (k.length() > 1) {
     t = 1;
     for (int i = 0; i < k.length(); i+=6) {
@@ -56,7 +56,7 @@ void loadLevel(int q) {
 
   //various info
 
-  k = lLevel[0+laz*5];
+  k = lLevel[0+laz*numLines];
   if (k.length() > 1) {
     id = parseInt(k.substring(0, 3));
     sx = parseInt(k.substring(4, 6));
@@ -72,7 +72,7 @@ void loadLevel(int q) {
 
 
   //enemies
-  k = lLevel[4+laz*5];
+  k = lLevel[4+laz*numLines];
   if (k.length() > 1) {
     for (int i = 0; i < k.length(); i+=10) {
       t =  parseInt(k.substring(i, i + 2));

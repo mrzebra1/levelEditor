@@ -26,6 +26,16 @@ void loadLevel(int q) {
       lands.add(new Land(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
     }
   }
+  
+   k = lLevel[5 +laz*numLines];
+  if (k.length() > 1) {
+    kk = 0;
+    for (int i = 0; i < k.length(); i+=10) {
+      homes.add(new House(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
+    }
+  }
+
+  
   //flys
   k = lLevel[3+laz*numLines];
   if (k.length() > 1) {

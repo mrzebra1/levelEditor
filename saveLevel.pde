@@ -86,7 +86,7 @@ void  saveStuff() {
 
   if (saveVar == -99) {
     saveData = new String[numLevs*numLines];
-    println(numLevs);
+    println(numLevs + " " + saveData.length);
     saveVar = 0;
   }
 
@@ -96,7 +96,7 @@ void  saveStuff() {
     if (saveVar > numLevs-1) {
       saveVar = -1;
       saveStrings("data/cheese.txt", saveData);
-      //lLevel = loadStrings("cheese.txt");//load everything
+      lLevel = loadStrings("cheese.txt");//load everything
     }
     lev++;
     if (lev > numLevs) 
@@ -113,7 +113,7 @@ void  saveStuff() {
 }
 
 void save1Lev(int q) {
-  numLines--;
+  q--;
 
   String line1 = "";
   String line2 = "";
@@ -206,6 +206,7 @@ void save1Lev(int q) {
     line6+=returnStuff(homes.get(i).y);
     line6+=returnStuff(homes.get(i).a1);
     line6+=returnStuff(homes.get(i).a2);
+    line6+=returnStuff(homes.get(i).a3);
   }
 
   if (homes.size() == 0)

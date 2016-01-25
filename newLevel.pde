@@ -1,8 +1,8 @@
 void newLevel(int q){
     numLevs++;
-    theLevel = new String[numLevs*5];
+    theLevel = new String[numLevs*numLines];
 
-    for (int i = 0; i < (q)*5; i++)
+    for (int i = 0; i < (q)*numLines; i++)
       theLevel[i] = lLevel[i];
 
    theLevel[q*5] = "000-03120412070999";
@@ -12,8 +12,8 @@ void newLevel(int q){
   theLevel[q*5+4] = "x";
 
 
-    for (int i = (q + 1)*5; i < numLevs*5; i++)
-      theLevel[i] = lLevel[i-5];
+    for (int i = (q + 1)*numLines; i < numLevs*numLines; i++)
+      theLevel[i] = lLevel[i-numLines];
       
       if(q == 1){
         lev = 1;

@@ -8,7 +8,7 @@ void setup() {
   textAlign(CENTER);
   lLevel = loadStrings("cheese.txt");//load everything
   theLevel = new String[lLevel.length];
-  numLevs = lLevel.length/5;
+  numLevs = lLevel.length/numLines;
   loadLevel(1);
 }
 
@@ -128,7 +128,7 @@ void draw() {
 
   //levels in circles
   textAlign(CENTER);
-  for (int i = 0; i < theLevel.length/5; i++) {
+  for (int i = 0; i < theLevel.length/numLines; i++) {
 
     loc0 = 20 + 25*((i%20));
     loc1 = 600+ 25*((int)(i/20));

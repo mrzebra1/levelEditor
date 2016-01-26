@@ -80,17 +80,19 @@ void saveLevel(int q) {
 
 String[] saveData;
 int saveVar = -1;
-int numLines = 6;
+int numLines = 7;
 
 void  saveStuff() {
 
   if (saveVar == -99) {
+    numLines = 7;
     saveData = new String[numLevs*numLines];
     println(numLevs + " " + saveData.length);
     saveVar = 0;
   }
 
   if (saveVar >=0) {
+    numLines = 7;
     save1Lev(lev);
     saveVar++;
     if (saveVar > numLevs-1) {
@@ -102,6 +104,7 @@ void  saveStuff() {
     if (lev > numLevs) 
       lev = 1;
 
+   // numLines = 6;
     loadLevel(lev);
   }
 
@@ -121,6 +124,7 @@ void save1Lev(int q) {
   String line4 = "";
   String line5 = "";
   String line6 = "";
+  String line7 = "";
 
 
   //line 1
@@ -212,10 +216,23 @@ void save1Lev(int q) {
   if (homes.size() == 0)
     line6+="h";
 
+
+  for (int i = 0; i <buses.size(); i++) {
+    line7+=returnStuff(buses.get(i).x);
+    line7+=returnStuff(buses.get(i).y);
+    line7+=returnStuff(buses.get(i).a1);
+    line7+=returnStuff(buses.get(i).a2);
+    line7+=returnStuff(buses.get(i).a3);
+  }
+
+  if (buses.size() == 0)
+    line7+="b";
+
   saveData[numLines*q+0] = line1;
   saveData[numLines*q+1] = line2;
   saveData[numLines*q+2] = line3;
   saveData[numLines*q+3] = line4;
   saveData[numLines*q+4] = line5;
   saveData[numLines*q+5] = line6;
+  saveData[numLines*q+6] = line7;
 }

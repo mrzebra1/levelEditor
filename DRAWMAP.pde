@@ -6,37 +6,43 @@ void drawMap() {
   }
 
   //rocks
-  for (int i = 0; i <lilys.size();i++) {
+  for (int i = 0; i <lilys.size(); i++) {
     ((Lily) lilys.get(i)).n=i;
     ((Lily) lilys.get(i)).drawMe();
   }
 
   //flys
-  for (int i = 0; i <flys.size();i++) {
+  for (int i = 0; i <flys.size(); i++) {
     ((Fly) flys.get(i)).n=i;
     ((Fly) flys.get(i)).drawMe();
   }
 
   //bees
-  for (int i = 0; i <bees.size();i++) {
+  for (int i = 0; i <bees.size(); i++) {
     ((Bee) bees.get(i)).n=i;
     ((Bee) bees.get(i)).drawMe();
   }
-  
-    //lavashooters
-  for (int i = 0; i <lshoots.size();i++) {
+
+  //lavashooters
+  for (int i = 0; i <lshoots.size(); i++) {
     ((LShoot) lshoots.get(i)).n=i;
     ((LShoot) lshoots.get(i)).drawMe();
   }
-  
-  
-      //homes
-  for (int i = 0; i <homes.size();i++) {
-    ((House)homes.get(i)).n=i;
-    ((House)homes.get(i)).drawMe();
+
+
+  //homes
+  for (int i = 0; i <homes.size(); i++) {
+    homes.get(i).n=i;
+    homes.get(i).drawMe();
   }
-  
-  
+
+
+  for (int i = 0; i <buses.size(); i++) {
+    buses.get(i).n=i;
+    buses.get(i).drawMe();
+  }
+
+
 
   //fill(#FF0000);
   drawHero(sx*g + g/2, sy*g+g/2, .5, #02AF28);

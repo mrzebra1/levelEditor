@@ -2,6 +2,7 @@ String levWords;
 
 void loadLevel(int q) {
   homes = new ArrayList();
+  buses = new ArrayList();
   lands = new ArrayList();
   lilys = new ArrayList();
   flys = new ArrayList();
@@ -32,6 +33,15 @@ void loadLevel(int q) {
     kk = 0;
     for (int i = 0; i < k.length(); i+=10) {
       homes.add(new House(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
+    }
+  }
+  
+  
+     k = lLevel[6 +laz*numLines];
+  if (k.length() > 1) {
+    kk = 0;
+    for (int i = 0; i < k.length(); i+=10) {
+      buses.add(new Bus(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
     }
   }
 

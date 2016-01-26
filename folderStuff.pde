@@ -1,8 +1,8 @@
 int tabVar;
 int FLeft = 620;
 int Fspace = 60;
-color[] tabColors = {#FFBF8E, #DDFF8E, #8EFFCF, #8EB2FF, #FF0000 };
-String[] tabNames = {"land", "rock", "fly", "ene", "home" };
+color[] tabColors = {#FFBF8E, #DDFF8E, #8EFFCF, #8EB2FF, #FF0000, #00AA88 };
+String[] tabNames = {"land", "rock", "fly", "ene", "home", "bus" };
 
 
 
@@ -32,6 +32,8 @@ void drawComp(int q) {
     beeTab(FLeft+20, 50);
   if (q == 4 )
     Obj(homes, FLeft+20, 50);
+  if (q == 5 )
+    Obj(buses, FLeft+20, 50);
 }
 
 void drawTab(float x, float y, color c, String w, int type) {

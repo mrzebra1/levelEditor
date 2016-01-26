@@ -1,6 +1,6 @@
 int whichItem = 0;
 String[] w  = {
-  "land", "rock", "sRock", "fly", "bee", "startP", "endP", "size", "snake", "lshoot", "house"
+  "land", "rock", "sRock", "fly", "bee", "startP", "endP", "size", "snake", "lshoot", "house", "bus"
 };
 
 
@@ -93,6 +93,9 @@ void mouseReleased() {
     }else if (whichItem == 10) {//home
 
      homes.add(new House(mGridX, mGridY));
+    }else if (whichItem == 11) {//bus
+
+     buses.add(new Bus(mGridX, mGridY));
     }
   }
 

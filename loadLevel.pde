@@ -4,7 +4,10 @@ void loadLevel(int q) {
   homes = new ArrayList();
   buses = new ArrayList();
   lands = new ArrayList();
-  lilys = new ArrayList();
+  rocks = new ArrayList();
+  
+  
+//  lilys = new ArrayList();
   flys = new ArrayList();
   bees = new ArrayList();
   lshoots = new ArrayList();
@@ -27,25 +30,25 @@ void loadLevel(int q) {
       lands.add(new Land(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
     }
   }
-  
-   k = lLevel[5 +laz*numLines];
+
+  k = lLevel[5 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
     for (int i = 0; i < k.length(); i+=10) {
       homes.add(new House(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
     }
   }
-  
-  
-     k = lLevel[6 +laz*numLines];
+
+
+  k = lLevel[6 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
     for (int i = 0; i < k.length(); i+=10) {
-      buses.add(new Bus(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
+      buses.add(new Bus(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8)), parseInt(k.substring(i+8, i+10))));
     }
   }
 
-  
+
   //flys
   k = lLevel[3+laz*numLines];
   if (k.length() > 1) {
@@ -58,18 +61,18 @@ void loadLevel(int q) {
   }
 
 
-  //rocks and special rocks
+  //rocks!
   k = lLevel[2+laz*numLines];
   if (k.length() > 1) {
     t = 1;
     for (int i = 0; i < k.length(); i+=6) {
       t = 0;
-      if (i < kk*6) {
-        t = 1;
-        specialCount++;
-      }
-      lilys.add(new Lily(parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
-      ((Lily)lilys.get(lilys.size() -1)).s=t;
+      //if (i < kk*6) {
+      //   t = 1;
+      //   specialCount++;
+      // }
+      rocks.add(new Rock(parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
+      //((Rock)lilys.get(lilys.size() -1)).s=t;
     }
   }
 
@@ -99,14 +102,12 @@ void loadLevel(int q) {
       if ( t < 10) {
         bees.add(new Bee(parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
         ((Bee)bees.get(bees.size() -1)).setVars(t, parseInt(k.substring(i+6, i+8)), parseInt(k.substring(i+8, i+10)));
-      }
-      else if (t == 10) {
+      } else if (t == 10) {
         snakeX = parseInt(k.substring(i+2, i+4));
         snakeY =  parseInt(k.substring(i+4, i+6));
         snakeV =  parseInt(k.substring(i+6, i+8));
-      }else if(t == 20){
+      } else if (t == 20) {
         lshoots.add(new LShoot(parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
-        
       }
     }
   }

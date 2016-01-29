@@ -1,15 +1,30 @@
 void drawMap() {
-  //lands
   for (int i = 0; i < lands.size(); i++) {
-    ((Land) lands.get(i)).n=i;
-    ((Land)(lands.get(i))).drawMe();
+    lands.get(i).n=i;
+    lands.get(i).drawMe();
   }
 
-  //rocks
-  for (int i = 0; i <lilys.size(); i++) {
-    ((Lily) lilys.get(i)).n=i;
-    ((Lily) lilys.get(i)).drawMe();
+  for (int i = 0; i <homes.size(); i++) {
+    homes.get(i).n=i;
+    homes.get(i).drawMe();
   }
+
+  for (int i = 0; i <buses.size(); i++) {
+    buses.get(i).n=i;
+    buses.get(i).drawMe();
+  }
+
+  for (int i = 0; i <rocks.size(); i++) {
+    rocks.get(i).n=i;
+    rocks.get(i).drawMe();
+  }
+  
+  
+  
+  
+  
+  
+  
 
   //flys
   for (int i = 0; i <flys.size(); i++) {
@@ -30,17 +45,7 @@ void drawMap() {
   }
 
 
-  //homes
-  for (int i = 0; i <homes.size(); i++) {
-    homes.get(i).n=i;
-    homes.get(i).drawMe();
-  }
 
-
-  for (int i = 0; i <buses.size(); i++) {
-    buses.get(i).n=i;
-    buses.get(i).drawMe();
-  }
 
 
 

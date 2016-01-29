@@ -11,7 +11,7 @@ class LShoot {
     fill(#0000FF);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
     fill(0);
-    textFont(myFont, 12);
+    textSize( 12);
     textAlign(CENTER);
     text("la" + n, g*(x)+g/2, g*(y)+g/2+6);
   }
@@ -32,7 +32,7 @@ class Fly {
     fill(#8302DB);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
     fill(0);
-    textFont(myFont, 12);
+    textSize( 12);
     textAlign(CENTER);
     text("f" + n, g*(x)+g/2, g*(y)+g/2+6);
   }
@@ -47,7 +47,7 @@ void flyTab(int px, int py) {
   int ppy = py;
 
   fill(0);
-  textFont(myFont, 10);
+  textSize( 10);
   textAlign(LEFT);
 
   for (int i = 0; i <flys.size();i++) {
@@ -72,7 +72,7 @@ void flyTab(int px, int py) {
 void beeTab(int px, int py) {
 
   fill(0);
-  textFont(myFont, 10);
+  textSize( 10);
   textAlign(LEFT);
   int k = 0;
 

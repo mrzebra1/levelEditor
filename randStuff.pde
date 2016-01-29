@@ -1,8 +1,66 @@
+void shiftMenu (int x, int y) {
+
+
+  fill(#FF0000);
+  ellipse(x, y, 40, 40);
+  ellipse(x+30, y, 40, 40);
+
+  if (mouseP && dist(mouseX, mouseY, x, y) < 20) {
+    mouseP = false;
+    shiftX();
+  }
+
+  if (mouseP && dist(mouseX, mouseY, x+30, y) < 20) {
+    mouseP = false;
+    shiftY();
+  }
+}
+
+
+
+void shiftX() {
+  int q =  parseInt(pin);
+  for (int i = 0; i < lands.size(); i++)
+    lands.get(i).x+=q;
+  for (int i = 0; i < rocks.size(); i++)
+    rocks.get(i).x+=q;
+  for (int i = 0; i < homes.size(); i++)
+    homes.get(i).x+=q;
+  for (int i = 0; i < buses.size(); i++)
+    buses.get(i).x+=q;
+  for (int i = 0; i <bees.size(); i++)
+    ((Bee) bees.get(i)).x+=q;
+}
+
+void shiftY() {
+  int q =  parseInt(pin);
+  for (int i = 0; i < lands.size(); i++)
+    lands.get(i).y+=q;
+  for (int i = 0; i < rocks.size(); i++)
+    rocks.get(i).y+=q;
+  for (int i = 0; i < homes.size(); i++)
+    homes.get(i).y+=q;
+  for (int i = 0; i < buses.size(); i++)
+    buses.get(i).y+=q;
+  for (int i = 0; i <bees.size(); i++)
+    ((Bee) bees.get(i)).y+=q;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 void addMenu(int x, int y) {
   //bottom menu
   textAlign(CENTER);
-  textFont(myFont, 10);
+  textSize( 10);
 
   int j = 0;
 
@@ -24,10 +82,10 @@ void addMenu(int x, int y) {
 
 void mapInfo(int x, int y) {
   fill(#AAFFFF);
-  rect(x, y, 100, 100);
+  rect(x, y, 150, 100);
   fill(0);
   textAlign(LEFT);
-  textFont(myFont, 15);
+  textSize( 15);
 
 
 
@@ -37,9 +95,9 @@ void mapInfo(int x, int y) {
     s+="(" + gridX+  ", " + gridY + ")";
   }
 
-  text("tool: " + w[whichItem], x+20, y+20);
-  text(s, x+20, y+40);
-  text("pin:" + pin, x+20, y+60);
+  text("tool: " + w[whichItem], x, y+20);
+  text(s, x, y+40);
+  text("pin:" + pin, x, y+60);
 }
 
 

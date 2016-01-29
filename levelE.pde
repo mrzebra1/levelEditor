@@ -4,7 +4,7 @@ void setup() {
   myFont = createFont("verdana", 12);
 
 
-  textFont(myFont, 20);
+  textSize( 20);
   textAlign(CENTER);
   lLevel = loadStrings("cheese.txt");//load everything
   theLevel = new String[lLevel.length];
@@ -53,25 +53,12 @@ void draw() {
 
 
 
-  folderStuff();
 
 
-
-
-
-
-
-
-
-
-
-
-
+  folderStuff(610, 20);
+  shiftMenu(650, 500);
   addMenu(650, 400);
-
   mapInfo(700, 500);
-
-
 
 
 
@@ -117,12 +104,14 @@ void draw() {
 
   loc1 += 30;
 
-  textFont(myFont, 8);
+  textSize( 8);
   text(levWords, loc0, loc1);
 
 
-  textFont(myFont, 12);
+  textSize( 12);
   loc1 = 620;
+
+
 
 
 
@@ -131,14 +120,14 @@ void draw() {
   for (int i = 0; i < theLevel.length/numLines; i++) {
 
     loc0 = 20 + 25*((i%20));
-    loc1 = 600+ 25*((int)(i/20));
+    loc1 = 620+ 25*((int)(i/20));
     k = 0;
     fill(200);
     if (i == lev - 1)
       fill(#FF0000);
     ellipse(loc0, loc1, 10, 10);
     fill(0);
-    text(i+1, loc0, loc1+ 7.5);
+    text(i, loc0, loc1+ 7.5);
 
     if (drag >=0) {
       fill(150, 50);
@@ -211,9 +200,9 @@ void draw() {
   if (drag == -2) {
     drag = -1;
   }
-  
-  
-  
+
+
+
   saveStuff();
 }
 
@@ -262,8 +251,8 @@ int startPin;
 String pin ="";
 
 void keyPressed() {
-  
-  if(key == 'z'){
+
+  if (key == 'z') {
     saveVar = -99;
   }
 
@@ -290,27 +279,7 @@ void keyPressed() {
     loadLevel(lev);
   } 
 
-  if (key == 'e') {
 
-    if (lev == 1) {
-      saveLevel(0);
-
-      for (int i = 5; i < numLevs*5; i++)
-        theLevel[i] = lLevel[i];
-    } else if (lev < numLevs) {
-      for (int i = 0; i < (lev-1)*5; i++)
-        theLevel[i] = lLevel[i];
-      saveLevel(lev-1);
-      for (int i = (5*(lev)); i < numLevs*5; i++)
-        theLevel[i] = lLevel[i];
-    } else if (lev == numLevs) {
-      for (int i = 0; i < (numLevs-1)*5; i++)
-        theLevel[i] = lLevel[i];
-      saveLevel(lev-1);
-    }
-    saveStrings("data/l.txt", theLevel);
-    lLevel = loadStrings("l.txt");//load everything
-  }
 
 
 

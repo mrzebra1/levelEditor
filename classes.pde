@@ -111,7 +111,7 @@ class Bus extends Zebra {
 
     textSize( 10);
     textAlign(LEFT);
-    text("b" + n + "-"+ a1, g*x, g*y+g/2);
+    text("b" + n + "-"+ a1+""+a2, g*x, g*y+g/2);
   }
 }
 

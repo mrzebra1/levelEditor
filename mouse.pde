@@ -1,6 +1,6 @@
 int whichItem = 0;
 String[] w  = {
-  "land", "rock", "item", "fly", "bee", "startP", "endP", "size", "snake", "lshoot", "home", "bus"
+  "land", "rock", "item", "fly", "bee", "startP", "endP", "size", "snake", "lshoot", "home", "bus",
 };
 
 
@@ -47,7 +47,7 @@ void mouseReleased() {
 
 
     if ( (w[whichItem]).equals("item")   ) {
-     // lands.add(new Land(mGridX, mGridY, rGridX-mGridX+1, rGridY-mGridY+1));//drag and release
+      items.add(new Item(mGridX, mGridY));
     }
 
 

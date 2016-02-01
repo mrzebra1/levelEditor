@@ -126,7 +126,7 @@ class Bee {
     //text
     fill(0);
     textAlign(CENTER);
-    //textSize( 12);
+    //textSize(12);
     text("b" + n, g*(x)+g/2, g*(y)+g/2+4.5);
 
 

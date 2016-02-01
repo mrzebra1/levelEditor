@@ -11,7 +11,7 @@ class LShoot {
     fill(#0000FF);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
     fill(0);
-    textSize( 12);
+    textSize(12);
     textAlign(CENTER);
     text("la" + n, g*(x)+g/2, g*(y)+g/2+6);
   }
@@ -32,7 +32,7 @@ class Fly {
     fill(#8302DB);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
     fill(0);
-    textSize( 12);
+    textSize(12);
     textAlign(CENTER);
     text("f" + n, g*(x)+g/2, g*(y)+g/2+6);
   }
@@ -47,10 +47,10 @@ void flyTab(int px, int py) {
   int ppy = py;
 
   fill(0);
-  textSize( 10);
+  textSize(10);
   textAlign(LEFT);
 
-  for (int i = 0; i <flys.size();i++) {
+  for (int i = 0; i <flys.size (); i++) {
     text(i, px+10, py+14.5);
     ellipse(px, py+10, 10, 10);
     if (mouseP && dist(px, py+10, mouseX, mouseY)<5) {
@@ -72,11 +72,11 @@ void flyTab(int px, int py) {
 void beeTab(int px, int py) {
 
   fill(0);
-  textSize( 10);
+  textSize(10);
   textAlign(LEFT);
   int k = 0;
 
-  for (int i = 0; i <bees.size();i++) {
+  for (int i = 0; i <bees.size (); i++) {
     k = 2;
     if (i>9)
       k+=6;
@@ -103,24 +103,19 @@ void beeTab(int px, int py) {
       mouseP = false;
       bees.remove(i);
       i--;
-    }
-    else if (mouseP && dist(px + 25.5+k, py+10+2, mouseX, mouseY)<5) {//change type
+    } else if (mouseP && dist(px + 25.5+k, py+10+2, mouseX, mouseY)<5) {//change type
       ((Bee) bees.get(i)).type++;
       mouseP = false;
-    }
-    else if (mouseP && dist(k+25+px + 50, py+10+2, mouseX, mouseY)<5) {
+    } else if (mouseP && dist(k+25+px + 50, py+10+2, mouseX, mouseY)<5) {
       ((Bee) bees.get(i)).r--;
       mouseP = false;
-    }
-    else if (mouseP && dist(k+25+px + 65, py+10+2, mouseX, mouseY)<5) {
+    } else if (mouseP && dist(k+25+px + 65, py+10+2, mouseX, mouseY)<5) {
       ((Bee) bees.get(i)).r++;
       mouseP = false;
-    }
-    else if (mouseP && dist(k+25+px + 80, py+10+2, mouseX, mouseY)<5) {
+    } else if (mouseP && dist(k+25+px + 80, py+10+2, mouseX, mouseY)<5) {
       ((Bee) bees.get(i)).v--;
       mouseP = false;
-    }
-    else if (mouseP && dist(k+25+px + 95, py+10+2, mouseX, mouseY)<5) {
+    } else if (mouseP && dist(k+25+px + 95, py+10+2, mouseX, mouseY)<5) {
       ((Bee) bees.get(i)).v++;
       mouseP = false;
     }
@@ -151,8 +146,7 @@ void beeTab(int px, int py) {
       if (snakeV > 9)
         snakeV = 1;
       mouseP = false;
-    }
-    else if (mouseP && dist(px, py+10, mouseX, mouseY)<5) {
+    } else if (mouseP && dist(px, py+10, mouseX, mouseY)<5) {
       snakeX = -99;
       snakeY = -99;
       mouseP = false;
@@ -165,33 +159,33 @@ void beeTab(int px, int py) {
     text("snake" + " (" + snakeV + ")", px+10, py+14.5);
     py += 15;
   }
-  
-  
-  
 
-      
-       if( bees.size() > 0)
-      py+=15;
-      
-      
-    //  if(snakeX != -99 &&  bees.size() == 0)
-     // py+=15;
-      
-  for(int i = 0; i < lshoots.size(); i++){
-     fill(0);
+
+
+
+
+  if ( bees.size() > 0)
+    py+=15;
+
+
+  //  if(snakeX != -99 &&  bees.size() == 0)
+  // py+=15;
+
+  for (int i = 0; i < lshoots.size (); i++) {
+    fill(0);
     ellipse(px, py+10, 10, 10);
-    text("lavaShooter" + i , px+10, py+14.5);
-    
-    
-     if (mouseP && dist(px, py+10, mouseX, mouseY)<5) {//delete
+    text("lavaShooter" + i, px+10, py+14.5);
+
+
+    if (mouseP && dist(px, py+10, mouseX, mouseY)<5) {//delete
       mouseP = false;
       lshoots.remove(i);
       i--;
     }
-    
-    
-    
-     py+=15;
-    
+
+
+
+    py+=15;
   }
 }
+

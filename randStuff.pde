@@ -60,7 +60,7 @@ void shiftY() {
 void addMenu(int x, int y) {
   //bottom menu
   textAlign(CENTER);
-  textSize( 10);
+  textSize(10);
 
   int j = 0;
 
@@ -85,7 +85,7 @@ void mapInfo(int x, int y) {
   rect(x, y, 150, 100);
   fill(0);
   textAlign(LEFT);
-  textSize( 15);
+  textSize(15);
 
 
 

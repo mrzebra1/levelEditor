@@ -5,9 +5,10 @@ void loadLevel(int q) {
   buses = new ArrayList();
   lands = new ArrayList();
   rocks = new ArrayList();
-  
-  
-//  lilys = new ArrayList();
+  items = new ArrayList();
+
+
+  //  lilys = new ArrayList();
   flys = new ArrayList();
   bees = new ArrayList();
   lshoots = new ArrayList();
@@ -26,7 +27,7 @@ void loadLevel(int q) {
   k = lLevel[1 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
-    for (int i = 0; i < k.length(); i+=8) {
+    for (int i = 0; i < k.length (); i+=8) {
       lands.add(new Land(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
     }
   }
@@ -34,7 +35,7 @@ void loadLevel(int q) {
   k = lLevel[5 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
-    for (int i = 0; i < k.length(); i+=10) {
+    for (int i = 0; i < k.length (); i+=10) {
       homes.add(new House(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
     }
   }
@@ -43,10 +44,20 @@ void loadLevel(int q) {
   k = lLevel[6 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
-    for (int i = 0; i < k.length(); i+=10) {
+    for (int i = 0; i < k.length (); i+=10) {
       buses.add(new Bus(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8)), parseInt(k.substring(i+8, i+10))));
     }
   }
+
+
+  k = lLevel[7 +laz*numLines];
+  if (k.length() > 1) {
+    kk = 0;
+    for (int i = 0; i < k.length (); i+=6) {
+      items.add(new Item(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
+    }
+  }
+
 
 
   //flys
@@ -55,7 +66,7 @@ void loadLevel(int q) {
     kk = k.length()/16;
 
     // println("flyGroups: " + kk);
-    for (int i = 0; i < k.length(); i+=4) {
+    for (int i = 0; i < k.length (); i+=4) {
       flys.add(new Fly(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4))));
     }
   }
@@ -65,7 +76,7 @@ void loadLevel(int q) {
   k = lLevel[2+laz*numLines];
   if (k.length() > 1) {
     t = 1;
-    for (int i = 0; i < k.length(); i+=6) {
+    for (int i = 0; i < k.length (); i+=6) {
       t = 0;
       //if (i < kk*6) {
       //   t = 1;
@@ -88,8 +99,10 @@ void loadLevel(int q) {
     ey = parseInt(k.substring(10, 12));
     lw = parseInt(k.substring(12, 14));
     lh = parseInt(k.substring(14, 16));
-    par = parseInt(k.substring(16, 18));
-    levWords = k.substring(18);
+    
+    
+    par = parseInt(k.substring(16, 18));//no
+    levWords = k.substring(18);//no
   }
 
 
@@ -97,7 +110,7 @@ void loadLevel(int q) {
   //enemies
   k = lLevel[4+laz*numLines];
   if (k.length() > 1) {
-    for (int i = 0; i < k.length(); i+=10) {
+    for (int i = 0; i < k.length (); i+=10) {
       t =  parseInt(k.substring(i, i + 2));
       if ( t < 10) {
         bees.add(new Bee(parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
@@ -112,3 +125,4 @@ void loadLevel(int q) {
     }
   }
 }
+

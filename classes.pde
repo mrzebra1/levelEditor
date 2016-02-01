@@ -6,6 +6,33 @@ class Zebra {
 }
 
 
+ArrayList<Zebra> items;
+class Item extends Zebra {
+  //x, y, type
+  Item(int x, int y, int a1) {
+    this.x=x;
+    this.y=y; 
+    this.a1=a1;
+  }
+
+  Item(int x, int y) {
+    this.x=x;
+    this.y=y; 
+  }
+  void drawMe() {
+    noStroke();
+    fill(#FF0000);
+    rect(x*g, y*g, g, g);
+    fill(0);
+    textSize(10);
+    textAlign(CENTER);
+    text("i" + n+"-"+a1, g*(x+a1/2), g*(y+a2/2)+6);
+  }
+}
+
+
+
+
 ArrayList<Zebra> lands;
 class Land extends Zebra {
   //x, y, width, height
@@ -20,7 +47,7 @@ class Land extends Zebra {
     fill(150);
     rect(x*g, y*g, a1*g, a2*g);
     fill(0);
-    textSize( 10);
+    textSize(10);
     textAlign(CENTER);
     text("L" + n, g*(x+a1/2), g*(y+a2/2)+6);
   }
@@ -58,13 +85,11 @@ class House extends Zebra {
       ellipse(x*g + g+g/2, y*g + g/2, 5, 5);//right
 
 
-    textSize( 10);
+    textSize(10);
     textAlign(LEFT);
     text("H" + n + "-"+ a1, g*x-g/2, g*y);
   }
 }
-
-
 
 
 ArrayList<Zebra> buses;
@@ -77,7 +102,6 @@ class Bus extends Zebra {
     a2 = 1;
     a3 = 1;
   } 
-
 
   Bus(int x, int y, int a1, int a2, int a3) {
     this.x=x;
@@ -93,23 +117,17 @@ class Bus extends Zebra {
     rect(x*g, y*g, g, g);
     fill(0);
 
-    
+    if (a3 == 1) 
+      ellipse(x*g + g/2, y*g, 5, 5);//up
+    else if (a3 == 2) 
+      ellipse(x*g+g/2, y*g + g, 5, 5);//down
+    else if (a3 == 3) 
+      ellipse(x*g, y*g + g/2, 5, 5);//left
+    else if (a3 == 4) 
+      ellipse(x*g + g, y*g + g/2, 5, 5);//right
 
-     if (a3 == 1) {
-     ellipse(x*g + g/2, y*g, 5, 5);//up
-     }
-     if (a3 == 2) {
-     ellipse(x*g+g/2, y*g + g, 5, 5);//down
-     }
-     if (a3 == 3) {
-     ellipse(x*g, y*g + g/2, 5, 5);//left
-     }
-     if (a3 == 4) {
-     ellipse(x*g + g, y*g + g/2, 5, 5);//right
-     }
-     
 
-    textSize( 10);
+    textSize(10);
     textAlign(LEFT);
     text("b" + n + "-"+ a1+""+a2, g*x, g*y+g/2);
   }

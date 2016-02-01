@@ -1,10 +1,12 @@
+//
+
 void setup() {
   size(985, 670);
   frameRate(30);
   myFont = createFont("verdana", 12);
 
 
-  textSize( 20);
+  textSize(20);
   textAlign(CENTER);
   lLevel = loadStrings("cheese.txt");//load everything
   theLevel = new String[lLevel.length];
@@ -55,7 +57,7 @@ void draw() {
 
 
 
-  folderStuff(610, 20);
+  folderStuff(610, 25);
   shiftMenu(650, 500);
   addMenu(650, 400);
   mapInfo(700, 500);
@@ -104,11 +106,11 @@ void draw() {
 
   loc1 += 30;
 
-  textSize( 8);
+  textSize(8);
   text(levWords, loc0, loc1);
 
 
-  textSize( 12);
+  textSize(12);
   loc1 = 620;
 
 

@@ -3,19 +3,22 @@
 
 String[] saveData;
 int saveVar = -1;
-int numLines = 7;
+
+int numLines = 8;
+
+
 
 void  saveStuff() {
 
   if (saveVar == -99) {
-    numLines = 7;
+   // numLines = 7;
     saveData = new String[numLevs*numLines];
     println(numLevs + " " + saveData.length);
     saveVar = 0;
   }
 
   if (saveVar >=0) {
-    numLines = 7;
+    //numLines = 7;
     save1Lev(lev);
     saveVar++;
     if (saveVar > numLevs-1) {
@@ -27,7 +30,7 @@ void  saveStuff() {
     if (lev > numLevs) 
       lev = 1;
 
-    // numLines = 6;
+
     loadLevel(lev);
   }
 
@@ -48,6 +51,7 @@ void save1Lev(int q) {
   String line5 = "";
   String line6 = "";
   String line7 = "";
+  String line8 = "";//items
 
 
   //line 1
@@ -64,7 +68,7 @@ void save1Lev(int q) {
 
 
 
-  for (int i = 0; i <lands.size(); i++) {
+  for (int i = 0; i <lands.size (); i++) {
     line2+=returnStuff(((Land)lands.get(i)).x);
     line2+=returnStuff( ((Land)lands.get(i)).y);
     line2+=returnStuff( (lands.get(i)).a1);
@@ -74,7 +78,7 @@ void save1Lev(int q) {
     line2+="L";
 
 
-  for (int i = 0; i <rocks.size(); i++) {
+  for (int i = 0; i <rocks.size (); i++) {
 
     line3+=returnStuff( rocks.get(i).x);
     line3+=returnStuff( rocks.get(i).y);
@@ -84,7 +88,7 @@ void save1Lev(int q) {
   if (rocks.size() == 0)
     line3+="R";
 
-  for (int i = 0; i <flys.size(); i++) {
+  for (int i = 0; i <flys.size (); i++) {
     line4+=returnStuff( ((Fly)flys.get(i)).x);
     line4+=returnStuff( ((Fly)flys.get(i)).y);
   }
@@ -96,7 +100,7 @@ void save1Lev(int q) {
 
   //line 5
 
-  for (int i = 0; i <bees.size(); i++) {
+  for (int i = 0; i <bees.size (); i++) {
     line5+=returnStuff( ((Bee)bees.get(i)).type);
     line5+=returnStuff( ((Bee)bees.get(i)).x);
     line5+=returnStuff( ((Bee)bees.get(i)).y);
@@ -105,7 +109,7 @@ void save1Lev(int q) {
   }
 
 
-  for (int i = 0; i <lshoots.size(); i++) {
+  for (int i = 0; i <lshoots.size (); i++) {
     line5+="20";
     line5+=returnStuff( ((LShoot)lshoots.get(i)).x);
     line5+=returnStuff( ((LShoot)lshoots.get(i)).y);
@@ -126,7 +130,7 @@ void save1Lev(int q) {
     line5+="E";
 
 
-  for (int i = 0; i <homes.size(); i++) {
+  for (int i = 0; i <homes.size (); i++) {
     line6+=returnStuff(homes.get(i).x);
     line6+=returnStuff(homes.get(i).y);
     line6+=returnStuff(homes.get(i).a1);
@@ -138,7 +142,7 @@ void save1Lev(int q) {
     line6+="H";
 
 
-  for (int i = 0; i <buses.size(); i++) {
+  for (int i = 0; i <buses.size (); i++) {
     line7+=returnStuff(buses.get(i).x);
     line7+=returnStuff(buses.get(i).y);
     line7+=returnStuff(buses.get(i).a1);
@@ -149,6 +153,20 @@ void save1Lev(int q) {
   if (buses.size() == 0)
     line7+="B";
 
+
+
+
+  for (int i = 0; i <items.size (); i++) {
+    line8+=returnStuff(items.get(i).x);
+    line8+=returnStuff(items.get(i).y);
+    line8+=returnStuff(items.get(i).a1);
+  }
+
+  if (items.size() == 0)
+    line8+="i";
+
+
+
   saveData[numLines*q+0] = line1;
   saveData[numLines*q+1] = line2;
   saveData[numLines*q+2] = line3;
@@ -156,4 +174,6 @@ void save1Lev(int q) {
   saveData[numLines*q+4] = line5;
   saveData[numLines*q+5] = line6;
   saveData[numLines*q+6] = line7;
+  saveData[numLines*q+7] = line8;
 }
+

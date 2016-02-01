@@ -16,24 +16,41 @@ int numRow = 40;
 
 
 
+color[] butC = {#FF0000,#00FF00,#0000FF,#FFFF00,#00FFFF};
+
 
 void Obj(ArrayList<Zebra> q, int px, int py, int beg, int end) {
   int ppy = py;
-  fill(0);
-  textSize( 10);
+
+  textSize(10);
   textAlign(LEFT);
 
 
 
-  for (int i = 0; i < q.size(); i++) {  
+  String num;
+
+  for (int i = 0; i < q.size (); i++) {  
     //println(instanceof q );
-    text(i + ": " + q.get(i).x + ", " + q.get(i).y + ", " + q.get(i).a1 + ", " + q.get(i).a2+", "+q.get(i).a3, px+10, py+14.5);//number
+    num = "";
+    num += returnStuff(i) + ": ";
+    num += returnStuff(q.get(i).x);
+    num += "-"+returnStuff(q.get(i).y);
+    num += "-"+returnStuff(q.get(i).a1);
+    num += "-"+returnStuff(q.get(i).a2);
+    num += "-"+returnStuff(q.get(i).a3);
+
+    fill(0);
+    text(num, px+10, py+14.5);
+
+
+
     ellipse(px, py+10, 10, 10);//delete button
 
     for (int j = beg; j <end; j++) {
-      ellipse(px + 120 + 15*j, py+10, 10, 10);//delete button
+      fill(butC[j]);
+      ellipse(px + 130 + 12*j-12*beg, py+10, 10, 10);//delete button
 
-      if (mouseP && dist(px + 120 + 15*j, py+10, mouseX, mouseY)<5) {
+      if (mouseP && dist(px + 130 + 12*j-12*beg, py+10, mouseX, mouseY)<5) {
         if (j == 0)
           q.get(i).x=parseInt(pin);
         if (j == 1)
@@ -75,7 +92,7 @@ void rockTab(int px, int py) {
  
  
  fill(0);
- textSize( 10);
+ textSize(10);
  textAlign(LEFT);
  
  

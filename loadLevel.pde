@@ -50,13 +50,16 @@ void loadLevel(int q) {
   }
 
 
+  /*
   k = lLevel[7 +laz*numLines];
-  if (k.length() > 1) {
-    kk = 0;
-    for (int i = 0; i < k.length (); i+=6) {
-      items.add(new Item(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
-    }
-  }
+   if (k.length() > 1) {
+   kk = 0;
+   for (int i = 0; i < k.length (); i+=6) {
+   items.add(new Item(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6))));
+   }
+   }
+   
+   */
 
 
 
@@ -90,6 +93,13 @@ void loadLevel(int q) {
 
   //various info
 
+
+
+  String itemz = "";//everything after 16 will be item stuff
+  //xx yy type --> 000000 six digits
+
+
+
   k = lLevel[0+laz*numLines];
   if (k.length() > 1) {
     id = parseInt(k.substring(0, 3));
@@ -99,11 +109,36 @@ void loadLevel(int q) {
     ey = parseInt(k.substring(10, 12));
     lw = parseInt(k.substring(12, 14));
     lh = parseInt(k.substring(14, 16));
-    
-    
-    par = parseInt(k.substring(16, 18));//no
-    levWords = k.substring(18);//no
+
+
+    itemz = k.substring(16);
   }
+
+  k = itemz;
+
+  int x, y, a1;
+
+  if (k.length() > 1) {
+    kk = 0;
+    for (int i = 0; i < k.length (); i+=6) {
+      x = parseInt(k.substring(i, i+2));
+      y = parseInt(k.substring(i+2, i+4));
+      a1 = parseInt(k.substring(i+4, i+6));
+
+
+      items.add(new Item( x, y, a1));
+    }
+  }
+
+  println(itemz);
+
+
+
+
+
+
+
+
 
 
 

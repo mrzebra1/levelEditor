@@ -2,15 +2,15 @@ void shiftMenu (int x, int y) {
 
 
   fill(#FF0000);
-  ellipse(x, y, 40, 40);
-  ellipse(x+30, y, 40, 40);
+  ellipse(x, y, 20, 20);
+  ellipse(x+30, y, 20, 20);
 
-  if (mouseP && dist(mouseX, mouseY, x, y) < 20) {
+  if (mouseP && dist(mouseX, mouseY, x, y) < 10) {
     mouseP = false;
     shiftX();
   }
 
-  if (mouseP && dist(mouseX, mouseY, x+30, y) < 20) {
+  if (mouseP && dist(mouseX, mouseY, x+30, y) < 10) {
     mouseP = false;
     shiftY();
   }

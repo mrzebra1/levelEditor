@@ -1,5 +1,7 @@
 //
 
+
+
 void setup() {
   size(985, 670);
   frameRate(30);
@@ -107,7 +109,7 @@ void draw() {
   loc1 += 30;
 
   textSize(8);
-  text(levWords, loc0, loc1);
+ // text(levWords, loc0, loc1);
 
 
   textSize(12);

@@ -11,7 +11,7 @@ int numLines = 8;
 void  saveStuff() {
 
   if (saveVar == -99) {
-   // numLines = 7;
+    // numLines = 7;
     saveData = new String[numLevs*numLines];
     println(numLevs + " " + saveData.length);
     saveVar = 0;
@@ -55,15 +55,28 @@ void save1Lev(int q) {
 
 
   //line 1
-  line1+= returnStuff2(id) + "-";//do I need this
+  line1+= returnStuff2(id) + "-";//do I need this yes
   line1+=returnStuff(sx);
   line1+=returnStuff(sy);
   line1+=returnStuff(ex);
   line1+=returnStuff(ey);
   line1+=returnStuff(lw);
   line1+=returnStuff(lh);
-  line1+=returnStuff(par);//no
-  line1+=levWords;
+  //line1+=returnStuff(par);//no
+  //line1+=levWords;
+
+
+
+  for (int i = 0; i <items.size (); i++) {
+    line1+=returnStuff(items.get(i).x);
+    line1+=returnStuff(items.get(i).y);
+    line1+=returnStuff(items.get(i).a1);
+  }
+
+
+
+
+
 
 
 
@@ -156,14 +169,16 @@ void save1Lev(int q) {
 
 
 
+  /*
   for (int i = 0; i <items.size (); i++) {
-    line8+=returnStuff(items.get(i).x);
-    line8+=returnStuff(items.get(i).y);
-    line8+=returnStuff(items.get(i).a1);
-  }
+   line8+=returnStuff(items.get(i).x);
+   line8+=returnStuff(items.get(i).y);
+   line8+=returnStuff(items.get(i).a1);
+   }
+   */
 
-  if (items.size() == 0)
-    line8+="i";
+  //  if (items.size() == 0)
+  line8+="END OF LEVEL";
 
 
 

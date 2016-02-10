@@ -6,7 +6,7 @@ class LShoot {
     this.y=y;
   } 
 
-  void drawMe() {
+  void update() {
     noStroke();
     fill(#0000FF);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
@@ -27,7 +27,7 @@ class Fly {
     this.y=y;
   } 
 
-  void drawMe() {
+  void update() {
     noStroke();
     fill(#8302DB);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
@@ -69,6 +69,8 @@ void flyTab(int px, int py) {
 
 
 
+
+//FIX
 void beeTab(int px, int py) {
 
   fill(0);
@@ -87,7 +89,7 @@ void beeTab(int px, int py) {
     ellipse(px + 25.5+k, py+10+2, 10, 10);
 
     fill(0);
-    text(i + " (" +((Bee) bees.get(i)).type + ") " +((Bee) bees.get(i)).r+ ", " +((Bee) bees.get(i)).v, px+10, py+14.5);
+    text(i + " (" +((Bee) bees.get(i)).a1 + ") " +((Bee) bees.get(i)).a2+ ", " +((Bee) bees.get(i)).a3, px+10, py+14.5);
     ellipse(px, py+10, 10, 10);
 
     fill(0);
@@ -104,19 +106,19 @@ void beeTab(int px, int py) {
       bees.remove(i);
       i--;
     } else if (mouseP && dist(px + 25.5+k, py+10+2, mouseX, mouseY)<5) {//change type
-      ((Bee) bees.get(i)).type++;
+      ((Bee) bees.get(i)).a1++;
       mouseP = false;
     } else if (mouseP && dist(k+25+px + 50, py+10+2, mouseX, mouseY)<5) {
-      ((Bee) bees.get(i)).r--;
+      ((Bee) bees.get(i)).a2--;
       mouseP = false;
     } else if (mouseP && dist(k+25+px + 65, py+10+2, mouseX, mouseY)<5) {
-      ((Bee) bees.get(i)).r++;
+      ((Bee) bees.get(i)).a2++;
       mouseP = false;
     } else if (mouseP && dist(k+25+px + 80, py+10+2, mouseX, mouseY)<5) {
-      ((Bee) bees.get(i)).v--;
+      ((Bee) bees.get(i)).a3--;
       mouseP = false;
     } else if (mouseP && dist(k+25+px + 95, py+10+2, mouseX, mouseY)<5) {
-      ((Bee) bees.get(i)).v++;
+      ((Bee) bees.get(i)).a3++;
       mouseP = false;
     }
 

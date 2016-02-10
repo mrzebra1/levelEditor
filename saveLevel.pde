@@ -86,6 +86,7 @@ void save1Lev(int q) {
     line2+=returnStuff( ((Land)lands.get(i)).y);
     line2+=returnStuff( (lands.get(i)).a1);
     line2+=returnStuff( (lands.get(i)).a2);
+     line2+=returnStuff( (lands.get(i)).a3);
   }
   if (lands.size() == 0)
     line2+="L";
@@ -114,12 +115,21 @@ void save1Lev(int q) {
   //line 5
 
   for (int i = 0; i <bees.size (); i++) {
-    line5+=returnStuff( ((Bee)bees.get(i)).type);
+    line5+=returnStuff( ((Bee)bees.get(i)).a1);
     line5+=returnStuff( ((Bee)bees.get(i)).x);
     line5+=returnStuff( ((Bee)bees.get(i)).y);
-    line5+=returnStuff( ((Bee)bees.get(i)).r);
-    line5+=returnStuff( ((Bee)bees.get(i)).v);
+    line5+=returnStuff( ((Bee)bees.get(i)).a2);
+    line5+=returnStuff( ((Bee)bees.get(i)).a3);
   }
+
+
+  //println(line5);
+
+
+
+
+
+
 
 
   for (int i = 0; i <lshoots.size (); i++) {

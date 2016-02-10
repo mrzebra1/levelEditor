@@ -53,7 +53,7 @@ void mouseReleased() {
 
 
     if ( (w[whichItem]).equals("land")   ) {
-      lands.add(new Land(mGridX, mGridY, rGridX-mGridX+1, rGridY-mGridY+1));//drag and release
+      lands.add(new Land(mGridX, mGridY, rGridX-mGridX+1, rGridY-mGridY+1,0));//drag and release
     }
 
     if ( (w[whichItem]).equals("rock")   ) {

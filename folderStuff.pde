@@ -29,20 +29,20 @@ void folderStuff(int x, int y) {
 
 void drawComp(int x, int y, int q) {
   if (q == 0 )
-    Obj(lands, x+20, y+10, 0, 0);
+    Obj(lands, x+20, y+20, 4, 5);
   if (q == 1)
-    Obj(rocks, x+20, y+10, 2, 3);
+    Obj(rocks, x+20, y+20, 2, 3);
   if (q == 2)
-    flyTab(x+20, y+10);
+    flyTab(x+20, y+20);
   if (q == 3)
-    beeTab(x+20, y+10);
+    beeTab(x+20, y+20);
   if (q == 4 )
-    Obj(homes, x+20, y+10, 2, 4);
+    Obj(homes, x+20, y+20, 2, 5);
   if (q == 5 )
-    Obj(buses, x+20, y+10, 0, 5);
+    Obj(buses, x+20, y+20, 0, 5);
 
   if (q == 6 )
-    Obj(items, x+20, y+10, 2, 3);
+    Obj(items, x+20, y+20, 2, 3);
 }
 
 void drawTab(float x, float y, color c, String w, int type) {

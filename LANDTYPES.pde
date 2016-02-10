@@ -16,14 +16,48 @@ int numRow = 40;
 
 
 
-color[] butC = {#FF0000,#00FF00,#0000FF,#FFFF00,#00FFFF};
+color[] butC = {
+  #FF0000, #00FF00, #0000FF, #FFFF00, #00FFFF
+};
+
+
+
+
+
 
 
 void Obj(ArrayList<Zebra> q, int px, int py, int beg, int end) {
   int ppy = py;
 
+
+
+
   textSize(10);
   textAlign(LEFT);
+  fill(0);
+
+
+  if (q.size()>0 && q.get(0) instanceof House) {
+    text("x, y, ID, orintation, color", px, py);
+    py+=10;
+  }
+
+  if (q.size()>0 && q.get(0) instanceof Item) {
+    text("x, y, type", px, py);
+    py+=10;
+  }
+  
+    if (q.size()>0 && q.get(0) instanceof Bus) {
+    text("x, y, routeID, nextMapID, dir", px, py);
+    py+=10;
+  }
+  
+
+
+
+
+
+
 
 
 

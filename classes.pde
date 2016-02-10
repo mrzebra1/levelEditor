@@ -1,9 +1,13 @@
 class Zebra {
   int x, y, a1, a2, a3, n;
-  int b, s;
-  void drawMe() {
+  void update() {
   }
 }
+
+
+
+
+
 
 
 ArrayList<Zebra> items;
@@ -17,9 +21,9 @@ class Item extends Zebra {
 
   Item(int x, int y) {
     this.x=x;
-    this.y=y; 
+    this.y=y;
   }
-  void drawMe() {
+  void update() {
     noStroke();
     fill(#FF0000);
     rect(x*g, y*g, g, g);
@@ -36,15 +40,20 @@ class Item extends Zebra {
 ArrayList<Zebra> lands;
 class Land extends Zebra {
   //x, y, width, height
-  Land(int x, int y, int a1, int a2) {
+  Land(int x, int y, int a1, int a2, int _a3) {
     this.x=x;
     this.y=y; 
     this.a1=a1;
     this.a2=a2;
+    a3 = _a3;
   }
-  void drawMe() {//draw gray rectangle for land
+  void update() {//draw gray rectangle for land
     noStroke();
-    fill(150);
+    if (a3 == 0) {
+      fill(150);
+    } else if (a3 == 1) {
+      fill(#994400);
+    }
     rect(x*g, y*g, a1*g, a2*g);
     fill(0);
     textSize(10);
@@ -55,7 +64,11 @@ class Land extends Zebra {
 
 ArrayList<Zebra> homes;
 class House extends Zebra {
-  //x, y, orintation, ID, type
+
+
+  //x, y, ID, orintation, color
+
+
   House(int x, int y) {//created by user
     this.x=x;
     this.y=y;
@@ -63,18 +76,20 @@ class House extends Zebra {
     a2 = 1;
     a3 = 1;
   } 
-  House(int x, int y, int a1, int a2) {//loaded
+  House(int x, int y, int a1, int a2, int a3) {//loaded
     this.x=x;
     this.y=y;
     this.a1=a1;
     this.a2=a2;
+    this.a3=a3;
   } 
-  void drawMe() {
+  void update() {
     noStroke();
     fill(#0000FF);
     rect(x*g - g/2, y*g-g/2, 2*g, 2*g);
     fill(0);
     //doors
+    //a2?
     if (a2 == 1)
       ellipse(x*g + g/2, y*g - g/2, 5, 5);//up
     else if (a2 == 2) 
@@ -111,7 +126,7 @@ class Bus extends Zebra {
     this.a3=a3;
   } 
 
-  void drawMe() {
+  void update() {
     noStroke();
     fill(#00FF00);
     rect(x*g, y*g, g, g);
@@ -144,7 +159,7 @@ class Rock extends Zebra {
 
   //in,   int b;
   int go;
-
+  int b, s;
   Rock(int x, int y) {//created on mouseclick
     this.x = x;
     this.y = y;
@@ -169,7 +184,7 @@ class Rock extends Zebra {
 
 
 
-  void drawMe() {
+  void update() {
     if (a1> 10)
       a1= 0;
     if (b>0) {

@@ -23,20 +23,44 @@ void loadLevel(int q) {
   int kk=0;
   int t;
 
+
+
+
+  int x, y, a1, a2, a3;
+
+
+
+
+
   //lands
   k = lLevel[1 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
-    for (int i = 0; i < k.length (); i+=8) {
-      lands.add(new Land(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
+    for (int i = 0; i < k.length (); i+=10) {
+      x = parseInt(k.substring(i, i+2));
+      y = parseInt(k.substring(i+2, i+4));
+      a1 = parseInt(k.substring(i+4, i+6));
+      a2 = parseInt(k.substring(i+6, i+8));
+      a3 = parseInt(k.substring(i+8, i+10));
+      lands.add(new Land(x, y, a1, a2,a3  ));
     }
   }
 
+
+
+  //homes
   k = lLevel[5 +laz*numLines];
   if (k.length() > 1) {
     kk = 0;
     for (int i = 0; i < k.length (); i+=10) {
-      homes.add(new House(  parseInt(k.substring(i, i+2)), parseInt(k.substring(i+2, i+4)), parseInt(k.substring(i+4, i+6)), parseInt(k.substring(i+6, i+8))));
+      x = parseInt(k.substring(i, i+2));
+      y = parseInt(k.substring(i+2, i+4));
+      a1 = parseInt(k.substring(i+4, i+6));
+      a2 = parseInt(k.substring(i+6, i+8));
+      a3 = parseInt(k.substring(i+8, i+10));
+
+
+      homes.add(new House(x, y, a1, a2, a3));
     }
   }
 
@@ -116,7 +140,7 @@ void loadLevel(int q) {
 
   k = itemz;
 
-  int x, y, a1;
+
 
   if (k.length() > 1) {
     kk = 0;
@@ -130,7 +154,7 @@ void loadLevel(int q) {
     }
   }
 
-  println(itemz);
+ // println(itemz);
 
 
 

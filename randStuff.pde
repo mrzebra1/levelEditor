@@ -82,7 +82,7 @@ void addMenu(int x, int y) {
 
 void mapInfo(int x, int y) {
   fill(#AAFFFF);
-  rect(x, y, 150, 100);
+  rect(x, y, 150, 70);
   fill(0);
   textAlign(LEFT);
   textSize(15);
@@ -95,9 +95,10 @@ void mapInfo(int x, int y) {
     s+="(" + gridX+  ", " + gridY + ")";
   }
 
-  text("tool: " + w[whichItem], x, y+20);
-  text(s, x, y+40);
-  text("pin:" + pin, x, y+60);
+int dx = 5;
+  text("tool: " + w[whichItem], x+dx, y+20);
+  text(s, x+dx, y+40);
+  text("pin:" + pin, x+dx, y+60);
 }
 
 

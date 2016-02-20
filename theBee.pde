@@ -53,7 +53,7 @@ class Bee extends Zebra {
   void update() {
     //println(a2 + "  " + a3);
 
-    if (a1 > 7) {//type
+    if (a1 > 9) {//type
       a1 = 0;
     }
 
@@ -126,19 +126,34 @@ class Bee extends Zebra {
         oy=g/2+y*g+a2*g*sin(360*(float)i/18);
         ellipse(ox, oy, 1, 1);
       }
-    }else if(a1 == 7){///square
+    } else if (a1 == 7 || a1 == 8) {///square
+
+      stroke(#FFFF00);
+
+      if (a1 == 8 )
+        stroke(#FF0000);
+      noFill();
+      rect(x*g+g/2, y*g+g/2, g*a2, g*a2);
+      noStroke();
+
+      if (a1 == 7) {
+        fill(0);
+        int locX = x*g+g/2+g*a2;
+        int locY = y*g+g/2;
+        if (a3 > 0)
+          triangle(locX, locY+10, locX-10, locY+4, locX+10, locY+4);
+        if (a3 < 0)
+          triangle(locX, locY+10, locX-10, locY+14, locX+10, locY+14);
+      }
+      // fill(0);
+      // text("cw",x*g+g/2,y*g+g/2);
+    }else if (a1== 9) {///follow
     
-     stroke(0);
-     noFill();
-     rect(x*g+g/2,y*g+g/2,g*a2,g*a2);
-     
-     noStroke();
-    // fill(0);
-    // text("cw",x*g+g/2,y*g+g/2);
-      
-      
-      
-      
+    
+    
+    
+    
+    
     }
 
 
@@ -149,15 +164,18 @@ class Bee extends Zebra {
 
 
 
-
-    fill(0);
-    ellipse(xx, yy, 4, 4);
+    if (a1< 7) {///square
+      fill(0);
+      ellipse(xx, yy, 4, 4);
+    }
 
 
     noStroke();
 
     //yellow center circle
     fill(255, 255, 0);
+    if(a1 == 9)
+    fill(#00FF88);
     ellipse(x*g + g/2, y*g + g/2, g/2, g/2);
     //text
     fill(0);

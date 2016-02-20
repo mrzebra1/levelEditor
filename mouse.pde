@@ -46,6 +46,10 @@ void mouseReleased() {
     }
 
 
+    if ( (w[whichItem]).equals("fly")   ) {
+      flys.add(new Fly(mGridX, mGridY));
+    }
+
     if ( (w[whichItem]).equals("item")   ) {
       items.add(new Item(mGridX, mGridY));
     }
@@ -53,7 +57,7 @@ void mouseReleased() {
 
 
     if ( (w[whichItem]).equals("land")   ) {
-      lands.add(new Land(mGridX, mGridY, rGridX-mGridX+1, rGridY-mGridY+1,0));//drag and release
+      lands.add(new Land(mGridX, mGridY, rGridX-mGridX+1, rGridY-mGridY+1, 0));//drag and release
     }
 
     if ( (w[whichItem]).equals("rock")   ) {
@@ -97,6 +101,21 @@ void mouseReleased() {
     }
 
 
+
+
+
+
+
+
+
+
+
+    if ((w[whichItem]).equals("snake")) {
+
+      snakeX= mGridX;
+      snakeY = mGridY;
+    }
+
     /*
 
      if (whichItem == 3) {
@@ -125,3 +144,4 @@ void mouseReleased() {
 
   mousePGraph = false;
 }
+

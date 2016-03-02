@@ -10,7 +10,7 @@ void setup() {
 
   textSize(20);
   textAlign(CENTER);
-  lLevel = loadStrings("cheese.txt");//load everything
+  lLevel = loadStrings("cc_levelDat.txt");//load everything
   theLevel = new String[lLevel.length];
   numLevs = lLevel.length/numLines;
   loadLevel(1);

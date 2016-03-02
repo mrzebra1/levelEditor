@@ -4,7 +4,7 @@
 String[] saveData;
 int saveVar = -1;
 
-int numLines = 8;
+int numLines = 7;
 
 
 
@@ -23,8 +23,8 @@ void  saveStuff() {
     saveVar++;
     if (saveVar > numLevs-1) {
       saveVar = -1;
-      saveStrings("data/cheese.txt", saveData);
-      lLevel = loadStrings("cheese.txt");//load everything
+      saveStrings("data/cc_levelDat.txt", saveData);
+      lLevel = loadStrings("cc_levelDat.txt");//load everything
     }
     lev++;
     if (lev > numLevs) 
@@ -108,7 +108,7 @@ void save1Lev(int q) {
   }
 
   if (flys.size() == 0)
-    line4+="F";
+    line4+="T";
 
 
 
@@ -188,7 +188,7 @@ void save1Lev(int q) {
    */
 
   //  if (items.size() == 0)
-  line8+="END OF LEVEL";
+  //line8+="END OF LEVEL";
 
 
 
@@ -199,6 +199,6 @@ void save1Lev(int q) {
   saveData[numLines*q+4] = line5;
   saveData[numLines*q+5] = line6;
   saveData[numLines*q+6] = line7;
-  saveData[numLines*q+7] = line8;
+  //saveData[numLines*q+7] = line8;
 }
 

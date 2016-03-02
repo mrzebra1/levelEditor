@@ -20,33 +20,50 @@ void shiftMenu (int x, int y) {
 
 void shiftX() {
   int q =  parseInt(pin);
-  for (int i = 0; i < lands.size(); i++)
+  for (int i = 0; i < lands.size (); i++)
     lands.get(i).x+=q;
-  for (int i = 0; i < rocks.size(); i++)
+  for (int i = 0; i < rocks.size (); i++)
     rocks.get(i).x+=q;
-  for (int i = 0; i < homes.size(); i++)
+  for (int i = 0; i < homes.size (); i++)
     homes.get(i).x+=q;
-  for (int i = 0; i < buses.size(); i++)
+  for (int i = 0; i < buses.size (); i++)
     buses.get(i).x+=q;
-  for (int i = 0; i <bees.size(); i++)
+  for (int i = 0; i <bees.size (); i++)
     ((Bee) bees.get(i)).x+=q;
+
+
+  for (int i = 0; i <items.size (); i++) {
+    items.get(i).x+=q;
+  }
+
+
+  //flys
+  for (int i = 0; i <flys.size (); i++) {
+    ((Fly) flys.get(i)).x+=q;
+  }
 }
 
 void shiftY() {
   int q =  parseInt(pin);
-  for (int i = 0; i < lands.size(); i++)
+  for (int i = 0; i < lands.size (); i++)
     lands.get(i).y+=q;
-  for (int i = 0; i < rocks.size(); i++)
+  for (int i = 0; i < rocks.size (); i++)
     rocks.get(i).y+=q;
-  for (int i = 0; i < homes.size(); i++)
+  for (int i = 0; i < homes.size (); i++)
     homes.get(i).y+=q;
-  for (int i = 0; i < buses.size(); i++)
+  for (int i = 0; i < buses.size (); i++)
     buses.get(i).y+=q;
-  for (int i = 0; i <bees.size(); i++)
+  for (int i = 0; i <bees.size (); i++)
     ((Bee) bees.get(i)).y+=q;
+  for (int i = 0; i <items.size (); i++) {
+    items.get(i).y+=q;
+  }
+
+  //flys
+  for (int i = 0; i <flys.size (); i++) {
+    ((Fly) flys.get(i)).y+=q;
+  }
 }
-
-
 
 
 
@@ -95,7 +112,7 @@ void mapInfo(int x, int y) {
     s+="(" + gridX+  ", " + gridY + ")";
   }
 
-int dx = 5;
+  int dx = 5;
   text("tool: " + w[whichItem], x+dx, y+20);
   text(s, x+dx, y+40);
   text("pin:" + pin, x+dx, y+60);
@@ -116,3 +133,4 @@ void drawHero(float x, float y, float s, color c) {
   fill(c);
   ellipse(x, y-10*s, 13*s, 13*s);
 }
+

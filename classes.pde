@@ -25,12 +25,14 @@ class Item extends Zebra {
   }
   void update() {
     noStroke();
+
+
     fill(#FF0000);
-    rect(x*g, y*g, g, g);
-    fill(0);
-    textSize(10);
-    textAlign(CENTER);
-    text("i" + n+"-"+a1, g*(x+a1/2), g*(y+a2/2)+6);
+
+    if (a1 >=10)
+      fill(#00cc00);
+
+    rect(x*g + 3, y*g + 3, g-6, g-6);
   }
 }
 
@@ -214,4 +216,3 @@ class Rock extends Zebra {
     }
   }
 }
-
